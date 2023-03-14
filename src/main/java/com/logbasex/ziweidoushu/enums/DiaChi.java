@@ -1,24 +1,37 @@
 package com.logbasex.ziweidoushu.enums;
 
+import com.logbasex.ziweidoushu.consts.StringConst;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Arrays;
+
 @Getter
 @RequiredArgsConstructor
-public enum EarthlyBranches {
+public enum DiaChi {
 	TY(1, "Tý"),
-	SUU(2, "Tý"),
-	DAN(3, "Tý"),
-	MAO(4, "Tý"),
-	THIN(5, "Tý"),
-	TI(6, "Tý"),
-	NGO(7, "Tý"),
-	MUI(8, "Tý"),
-	THAN(9, "Tý"),
-	DAU(10, "Tý"),
-	TUAT(11, "Tý"),
-	HOI(12, "Tý"),
+	SUU(2, "Sửu"),
+	DAN(3, "Dần"),
+	MAO(4, "Mão"),
+	THIN(5, "Thìn"),
+	TI(6, "Tỵ"),
+	NGO(7, "Ngọ"),
+	MUI(8, "Mùi"),
+	THAN(9, "Thân"),
+	DAU(10, "Dậu"),
+	TUAT(11, "Tuất"),
+	HOI(12, "Hợi");
 	
-	private final int id;
+	private final Integer id;
 	private final String name;
+	
+	public static String getNameById(Integer id) {
+		if (id == null) return null;
+		return Arrays
+				.stream(DiaChi.values())
+				.filter(i -> i.getId().equals(id))
+				.map(DiaChi::getName)
+				.findFirst()
+				.orElse(StringConst.EMPTY);
+	}
 }
